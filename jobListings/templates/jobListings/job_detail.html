@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{{ job.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ job.title }}</h1>
+
+<p><strong>Empresa:</strong> {{ job.company }}</p>
+<p><strong>Localização:</strong> {{ job.location }}</p>
+<p><strong>Nível:</strong> {{ job.level }}</p>
+<p><strong>Tipo de trabalho:</strong> {{ job.work }}</p>
+<p><strong>Salário:</strong> {{ job.salary_range }}</p>
+
+<p>{{ job.content }}</p>
+<a href="/aplicado.html"><button>Aplicar para trabalho</button></a>
+<br>    
+<a href="/">Voltar</a>
+{% endblock %}
