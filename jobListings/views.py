@@ -15,3 +15,7 @@ def index(request):
 def job_detail(request, pk):
     job = get_object_or_404(JobListing, pk=pk)
     return render(request, "jobListings/job_detail.html", {"job": job})
+
+def home(request):
+    recent_jobs = JobListing.objects.order_by('-date_published')[:5]
+    return render(request, 'jobListings/home.html', {'recent_jobs': recent_jobs})

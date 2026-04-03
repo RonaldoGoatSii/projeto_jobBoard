@@ -2,7 +2,6 @@ from django.db import models
 from datetime import datetime
 from django.urls import reverse
 
-
 class JobListing(models.Model):
     title = models.CharField(max_length=50)
     level = models.CharField(max_length=20)
@@ -18,4 +17,3 @@ class JobListing(models.Model):
 
     def get_absolute_url(self):
         return reverse("job_detail", args=[self.id])
-
