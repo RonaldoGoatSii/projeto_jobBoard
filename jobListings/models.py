@@ -1,7 +1,8 @@
 from django.db import models
 from datetime import datetime
 from django.urls import reverse
-from accounts.models import User
+from company.models import Company
+
 
 class Company(models.Model):
     name = models.CharField(max_length=255)
