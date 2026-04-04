@@ -35,14 +35,20 @@ def account_view(request, pk):
     if request.user.pk != user.pk:
         return redirect("home")
 
-    return render(request, "accounts/account.html", {"user": user})
+    jobs = []
+    applications = []
 
-@login_required
-def create_job_view(request):
-    return render(request, "jobs/create_job.html")
+    if user.is_employer:
+        if hasattr(user, "company"):
+            jobs = user.company.jobs.all()
+            applications = Application.objects.filter(job__company=user.company)
 
+    if user.is_employee:
+        applications = Application.objects.filter(candidate=user)
 
-@login_required
-def edit_company_view(request):
-    return render(request, "company/edit_company.html")
+    return render(request, "accounts/account.html", {
+        "user": user,
+        "jobs": jobs,
+        "applications": applications,
+    })
 
