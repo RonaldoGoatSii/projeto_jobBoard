@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'company',
     'search',
     'accounts',
-    'jobListings.apps.JobListingsConfig',
+    'jobListings',
     'applicationPipeline',
     'django.contrib.admin',
     'django.contrib.auth',
