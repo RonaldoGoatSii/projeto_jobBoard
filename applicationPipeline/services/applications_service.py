@@ -6,3 +6,16 @@ def update_status(application, new_status):
     application.status = new_status
     application.save()
     return application
+
+def create_application(user, job, company, message=""):
+    from applicationPipeline.models import Application
+
+    application = Application.objects.create(
+        candidate=user,   
+        job=job,
+        company=company,
+        notes=message,
+        status="applied"
+    )
+
+    return application
